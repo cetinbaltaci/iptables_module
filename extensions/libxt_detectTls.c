@@ -6,7 +6,7 @@
 #include <string.h>
 #include <xtables.h>
 #include <linux/netfilter.h>
-#include "xt_detecttls.h"
+#include "../module/xt_detecttls.h"
 
 static const struct option detectTls_mt_opts[] = {
 	{.name = "type", .has_arg = true, .val = '1'},
