@@ -4,7 +4,7 @@
 #include <linux/version.h>
 #include <linux/netfilter.h>
 #include <linux/netfilter/x_tables.h>
-#include <linux/netfilter/xt_detecttls.h>
+#include "xt_detecttls.h"
 
 static bool detectTls_mt(const struct sk_buff *skb, struct xt_action_param *par)
 {
