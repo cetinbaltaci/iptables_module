@@ -54,8 +54,9 @@ static void detectTls_mt_print(const void *entry,
     const struct xt_entry_match *match, int numeric)
 {
 	const struct xt_detectTls *info = (const void *)match->data;
-
-	printf(" detectTls Type:%04x Handshake: %02x Cipher: %02x" , info->type, info->handshake, info->cipherSuite );
+	printf(" detectTls Type:%04x Handshake: %s Cipher: %04x" , info->type, 
+		(info->handshake == 1) ? "ClientHello":  (info->handshake == 2) ? "ServerHello" : "UnKnown", 
+		info->cipherSuite );
 }
 
 
@@ -66,13 +67,9 @@ static struct xtables_match detectTls_mt_reg = {
 	.family        = NFPROTO_UNSPEC,
 	.size          = XT_ALIGN(sizeof(struct xt_detectTls)),
 	.userspacesize = XT_ALIGN(sizeof(struct xt_detectTls)),
-	/* called when user execs "iptables -m ipaddr -h" */
 	.help          = detectTls_mt_help,
-	/* populates the xt_ipaddr_mtinfo before parse (eg. to set defaults). */
 	.init          = detectTls_mt_init,
-	/* called when user enters new rule; it validates the args (--ipsrc). */
 	.parse         = detectTls_mt_parse,
-	/* called when user execs "iptables -L" */
 	.print         = detectTls_mt_print,
 	.extra_opts    = detectTls_mt_opts,
 };

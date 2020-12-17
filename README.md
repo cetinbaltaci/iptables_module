@@ -31,7 +31,7 @@ This is a Kernle IPTABLES module for TLS / SSL connections.
 
     sudo iptables -L OUTPUT
     Output:
-    DROP       all  --  anywhere             anywhere             state NEW,RELATED,ESTABLISHED detectTls Type:0302 Handshake: 01 Cipher: cca8
+    DROP       all  --  anywhere             anywhere             state NEW,RELATED,ESTABLISHED detectTls Type:0302 Handshake: ClientHello Cipher: cca8
 
 
 > Cipher Suites List:
