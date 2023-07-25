@@ -7,7 +7,7 @@ lib%.so: lib%.o
 	gcc -shared -fPIC -o $@ $^;
 
 lib%.o: lib%.c
-	gcc ${CFLAGS} -D_INIT=lib$*_init -fPIC -c -o $@ $<;
+	gcc ${CFLAGS} -fPIC -c -o $@ $<;
 
 clean:
 	rm -f ${NAME}.o ${LIBNAME}

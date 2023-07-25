@@ -74,7 +74,7 @@ static struct xtables_match detectTls_mt_reg = {
 	.extra_opts    = detectTls_mt_opts,
 };
 
-void _init(void)
+void __attribute((constructor)) my_init(void)
 {
 	xtables_register_match(&detectTls_mt_reg);
 }
